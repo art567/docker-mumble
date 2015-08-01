@@ -1,4 +1,4 @@
-**This project is no longer under development, if you'd like to fork and continue the project please do! Let me know your fork and I'll link to it.**
+**This project is based on overshard/docker-mumble as continued development, if you'd like to fork and continue the project please do! Thanks to overshard**
 
 # docker-mumble
 
@@ -12,9 +12,9 @@ more information on Mumble and check out it's [website][1].
 Running this will build you a docker image with the latest version of both
 docker-mumble and Mumble itself.
 
-    git clone https://github.com/overshard/docker-mumble
+    git clone https://github.com/art567/docker-mumble
     cd docker-mumble
-    docker build -t overshard/mumble .
+    docker build -t art567/mumble .
 
 
 ## Running docker-mumble
@@ -25,12 +25,12 @@ system you can map the port to 64738 and no proxy is needed. i.e.
 `-p=64738:64738` Also be sure your mounted directory on your host machine is
 already created before running `mkdir -p /mnt/mumble`.
 
-    sudo docker run -d=true -p=64738:64738 -v=/mnt/mumble:/data overshard/mumble /start
+    sudo docker run -d=true -p=64738:64738/udp -p=64738:64738 -v=/mnt/mumble:/data art567/mumble /start
 
 From now on when you start/stop docker-mumble you should use the container id
 with the following commands. To get your container id, after you initial run
 type `sudo docker ps` and it will show up on the left side followed by the image
-name which is `overshard/mumble:latest`.
+name which is `art567/mumble:latest`.
 
     sudo docker start <container_id>
     sudo docker stop <container_id>
@@ -39,7 +39,7 @@ name which is `overshard/mumble:latest`.
 ### Notes on the run command
 
  + `-v` is the volume you are mounting `-v=host_dir:docker_dir`
- + `overshard/mumble` is simply what I called my docker build of this image
+ + `art567/mumble` is simply what I called my docker build of this image
  + `-d=true` allows this to run cleanly as a daemon, remove for debugging
  + `-p` is the port it connects to, `-p=host_port:docker_port`
 
